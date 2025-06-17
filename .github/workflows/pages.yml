@@ -31,7 +31,7 @@ jobs:
         env:
           REACT_APP_DEMO_MODE: true
           REACT_APP_API_URL: /api
-          PUBLIC_URL: /ai-character-creator
+          PUBLIC_URL: /L.N.A.E.
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

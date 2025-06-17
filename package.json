@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Advanced AI-powered character creator with multi-model support and automated workflows",
+  "homepage": "https://huntman1210.github.io/L.N.A.E/",
   "main": "src/index.js",
   "scripts": {
     "start": "react-scripts start",
