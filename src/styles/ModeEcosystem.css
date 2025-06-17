@@ -1,0 +1,556 @@
+/**
+ * Mode Ecosystem Styles
+ * Comprehensive styling for the 300+ development mode ecosystem interface
+ */
+
+.mode-ecosystem {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Loading State */
+.mode-ecosystem-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.mode-ecosystem-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+}
+
+/* Header */
+.ecosystem-header {
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ecosystem-header h1 {
+  margin: 0 0 20px 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.ecosystem-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 5px;
+}
+
+/* Main Content */
+.ecosystem-content {
+  display: flex;
+  min-height: calc(100vh - 200px);
+}
+
+/* Sidebar */
+.ecosystem-sidebar {
+  width: 320px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.search-section {
+  margin-bottom: 30px;
+}
+
+.search-section h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #4ecdc4;
+  box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Tier Navigation */
+.tier-navigation {
+  margin-bottom: 30px;
+}
+
+.tier-navigation h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.tier-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tier-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tier-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
+.tier-button.active {
+  background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+  box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+}
+
+.tier-number {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.tier-name {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 2px;
+}
+
+/* Recommendations */
+.recommendations {
+  margin-top: 30px;
+}
+
+.recommendations h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.recommendation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recommendation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mode-name {
+  font-size: 0.85rem;
+  color: #ffffff;
+}
+
+.switch-button {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  color: #ffffff;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.switch-button:hover {
+  transform: scale(1.05);
+}
+
+/* Main Content Area */
+.ecosystem-main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Current Mode Display */
+.current-mode-display {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.active-mode h2,
+.no-active-mode h2 {
+  margin: 0 0 15px 0;
+  font-size: 1.5rem;
+}
+
+.mode-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mode-info .mode-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.deactivate-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.deactivate-button:hover {
+  transform: scale(1.05);
+}
+
+.no-active-mode {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Mode Grid */
+.mode-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.search-results,
+.tier-modes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.search-results h3,
+.tier-modes h3 {
+  margin: 0 0 20px 0;
+  font-size: 1.8rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.result-category {
+  margin-bottom: 30px;
+}
+
+.result-category h4 {
+  margin: 0 0 15px 0;
+  font-size: 1.3rem;
+  color: #4ecdc4;
+  border-bottom: 2px solid rgba(78, 205, 196, 0.3);
+  padding-bottom: 5px;
+}
+
+.mode-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+/* Mode Card */
+.mode-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.mode-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  border-color: #4ecdc4;
+}
+
+.mode-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.mode-header .mode-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.mode-tier {
+  padding: 4px 8px;
+  background: linear-gradient(45deg, #45b7d1, #96ceb4);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.mode-description p {
+  margin: 0 0 15px 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.mode-details {
+  margin-bottom: 20px;
+}
+
+.mode-capabilities,
+.mode-tools {
+  margin-bottom: 12px;
+}
+
+.mode-capabilities strong,
+.mode-tools strong {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: #4ecdc4;
+}
+
+.capability-tags,
+.tool-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.capability-tag,
+.tool-tag {
+  padding: 3px 8px;
+  background: rgba(78, 205, 196, 0.2);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: #ffffff;
+  border: 1px solid rgba(78, 205, 196, 0.3);
+}
+
+.tool-tag {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+.mode-actions {
+  text-align: center;
+}
+
+.activate-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
+}
+
+.activate-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+}
+
+/* Footer */
+.ecosystem-footer {
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.performance-metrics {
+  text-align: center;
+}
+
+.performance-metrics h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.metrics {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.metrics span {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .ecosystem-content {
+    flex-direction: column;
+  }
+  
+  .ecosystem-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .tier-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .tier-button {
+    flex: 1;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ecosystem-header {
+    padding: 15px 20px;
+  }
+  
+  .ecosystem-header h1 {
+    font-size: 2rem;
+  }
+  
+  .ecosystem-stats {
+    gap: 15px;
+  }
+  
+  .stat-card {
+    padding: 10px 15px;
+  }
+  
+  .mode-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .ecosystem-sidebar {
+    padding: 15px;
+  }
+  
+  .ecosystem-main {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ecosystem-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .mode-card {
+    padding: 15px;
+  }
+  
+  .mode-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

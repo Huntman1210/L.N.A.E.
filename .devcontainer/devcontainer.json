@@ -1,0 +1,29 @@
+{
+  "name": "AI Character Creator Codespace",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/mongodb:1": {}
+  },
+  "postCreateCommand": "npm install && npm run setup && npm run build",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "mongodb.mongodb-vscode"
+      ]
+    }
+  },
+  "forwardPorts": [3000, 3001, 5000],
+  "portsAttributes": {
+    "3000": { "label": "Frontend" },
+    "3001": { "label": "AI Orchestrator" },
+    "5000": { "label": "Backend/Server" }
+  }
+}

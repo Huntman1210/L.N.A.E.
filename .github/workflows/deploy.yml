@@ -1,0 +1,102 @@
+name: Deploy AI Character Creator
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:5.0
+        env:
+          MONGO_INITDB_DATABASE: ai-character-creator
+        options: >-
+          --health-cmd mongo
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 27017:27017
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npx eslint . --ext .js,.jsx --max-warnings 0 || true
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Run integration tests
+        run: npm run test-integration
+        env:
+          MONGODB_URI: mongodb://localhost:27017/ai-character-creator-test
+          JWT_SECRET: test-jwt-secret-key
+          NODE_ENV: test
+
+  deploy-demo:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build for production
+        run: npm run build
+        env:
+          REACT_APP_API_URL: https://ai-character-creator-demo.herokuapp.com
+          REACT_APP_DEMO_MODE: true
+
+      - name: Deploy to Heroku (Demo)
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "ai-character-creator-demo"
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          buildpack: "https://github.com/mars/create-react-app-buildpack.git"
+
+      - name: Deploy Backend to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "ai-character-creator-api"
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          appdir: "server"
+
+  deploy-docs:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs

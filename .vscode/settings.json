@@ -1,0 +1,14 @@
+{
+    "github.copilot.enable": {
+        "javascript": true,
+        "json": true,
+        "markdown": true
+    },
+    "github.copilot.chat.enabled": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+    },
+    "javascript.preferences.includePackageJsonAutoImports": "on",
+    "typescript.preferences.includePackageJsonAutoImports": "on"
+}

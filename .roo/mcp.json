@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "stripe": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@stripe/mcp",
+        "--tools=all",
+        "--api-key=sk_test_51RQ7lVPHTDUaGxqQVMgxZb3xusJIBbxXjKsT8GKBvdV7rIdwBJr6vIjSkpKakmDaqIEoc8qmMCNh48N9yv63dntS00N6LOYzCS"
+      ]
+    }
+  }
+}
